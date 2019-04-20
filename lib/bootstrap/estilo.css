@@ -1,0 +1,33 @@
+.quadro {
+    width: 920px;
+    text-align: left;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+} 
+.table {
+    margin-top: 20px;
+    text-align: left;
+}
+.form-control {
+    margin-bottom: 5px;
+   
+}
+
+.titulo{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold
+}
+
+.formulario{
+    text-align: center;
+}
+
+.center{
+text-align: right
+}
+
+.botoes{
+    text-align: center;
+}

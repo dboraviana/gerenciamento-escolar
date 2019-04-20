@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html ng-app="ConsultarAluno">
+    <head>
+        <title>Consultar aluno</title>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src='bower_components/ngMask/dist/ngMask.min.js'></script>
+        <script src="controllers/ConsultaAluno.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script> 
+        <script src="bower_components/angular-animate/angular-animate.js"></script> 
+        <script src="bower_components/angular-messages/angular-messages.js"></script> 
+        <script src="bower_components/angular-material/angular-material.js"></script> 
+        <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="lib/bootstrap/estilo.css">
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    </head>
+    <body ng-controller="ConsultarAlunoCtrl">
+        <div class="quadro">
+          <md-content layout-gt-sm="row" layout-padding>
+        
+            <h1>{{app}}</h1>
+  
+            <md-content layout-padding>
+              <md-input-container class="md-block" flex-gt-xs>
+                <label>Nome ou CPF:  </label>
+                <textarea md-maxlength="30"  md-select-on-focus ng-model="aluno.nome"></textarea>
+              </md-input-container>
+            
+
+              Alunos
+              <md-table-container>
+                <table>
+                  <thead>
+                    <tr>
+                      teste
+                    </tr>
+                    <th>teste 2</th>
+                  </thead>
+                </table>
+             
+                <thead>
+                  <td>Nome</td>
+                  <td>Genero</td>
+                  <td>Telefone</td>
+                  <td></td>
+                </thead>
+              </tbody>
+            </table>
+            
+                     
+            <div class="botoes">
+            <md-button class="md-raised md-primary" ng-click="cadastrar(aluno)">Cadastrar</md-button>
+            <md-button class="md-raised" ng-click="limpar(aluno)">Limpar</md-button>
+            <md-button class="md-raised md-warn">Cancelar</md-button>
+          </div>
+          </form>
+        </div>
+      </md-content>
+    
+    </div>
+  </div>
+</body>
