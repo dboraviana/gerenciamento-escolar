@@ -13,7 +13,9 @@
         <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
         <link rel="stylesheet" href="lib/bootstrap/estilo.css">
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-    </head>
+        
+        <link rel="stylesheet" href="bower_components/material-design-icons/">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <body ng-controller="ConsultarAlunoCtrl">
         <div class="quadro">
           <md-content layout-gt-sm="row" layout-padding>
@@ -23,36 +25,41 @@
             <md-content layout-padding>
               <md-input-container class="md-block" flex-gt-xs>
                 <label>Nome ou CPF:  </label>
-                <textarea md-maxlength="30"  md-select-on-focus ng-model="aluno.nome"></textarea>
+                <textarea md-select-on-focus ng-model="aluno.nome"></textarea>
               </md-input-container>
-            
+              <div class="botoes-consultar">
+                  <md-button class="md-raised md-primary" ng-click="cadastrar(aluno)">Cadastrar</md-button>
+                  <md-button class="md-raised" ng-click="limpar(aluno)" ng-show="aluno.nome">Limpar</md-button> 
+                </div>
 
-              Alunos
+              
               <md-table-container>
-                <table>
-                  <thead>
-                    <tr>
-                      teste
-                    </tr>
-                    <th>teste 2</th>
-                  </thead>
+                <table class="table table-striped">
+                  <thead>Lista de Aluno</thead>
+                  <tbody>
+                  <tr>   
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Data de Cadastro</th>
+                    <th>Ações</th>
+                  </tr>  
+                  <tr ng-repeat="aluno in alunos">
+                    <td >{{aluno.nome}}</td>
+                    <td >{{aluno.cpf}}</td>
+                    <td >{{aluno.telefone}}</td>
+                    <td >{{aluno.data }}</td>
+                    <td ><i class="material-icons ">build</i>
+                    <i class="material-icons">delete</i>
+                    <i class="material-icons">pageview</i></td>
+                
+                  </tr>              
                 </table>
              
-                <thead>
-                  <td>Nome</td>
-                  <td>Genero</td>
-                  <td>Telefone</td>
-                  <td></td>
-                </thead>
+               
               </tbody>
             </table>
             
-                     
-            <div class="botoes">
-            <md-button class="md-raised md-primary" ng-click="cadastrar(aluno)">Cadastrar</md-button>
-            <md-button class="md-raised" ng-click="limpar(aluno)">Limpar</md-button>
-            <md-button class="md-raised md-warn">Cancelar</md-button>
-          </div>
           </form>
         </div>
       </md-content>

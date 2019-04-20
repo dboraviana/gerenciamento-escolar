@@ -1,7 +1,9 @@
 angular.module('CadastroAluno', ['br.cidades.estados', 'ngMask', 'ngMaterial', 'ngMessages']);
 angular.module("CadastroAluno").controller("CadastroAlunoCtrl", function ($scope, brCidadesEstados){
     $scope.app = "Cadastro de Aluno";
-    $scope.alunos = [];
+    $scope.alunos = [
+        {nome:"Débora Viana", cpf:"70033574103", telefone:"61991032335", data: new Date()}
+    ];
 
     $scope.cadastrar = function(aluno){
         console.log(aluno)
@@ -10,7 +12,7 @@ angular.module("CadastroAluno").controller("CadastroAlunoCtrl", function ($scope
     }
     $scope.limpar = function(aluno){
         delete $scope.aluno;
-        $scope.alunoForm.$setPristine();
+        $scope.alunoForm.$setUntouched();
     }
     $scope.sexo = [
     {nome: "Femino", codigo: "1"},

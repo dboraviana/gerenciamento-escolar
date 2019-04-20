@@ -31,3 +31,9 @@ text-align: right
 .botoes{
     text-align: center;
 }
+.botoes-consultar{
+    text-align: right;
+}
+table {
+    width: 100%;
+  }
