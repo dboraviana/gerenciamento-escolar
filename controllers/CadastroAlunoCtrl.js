@@ -1,5 +1,5 @@
 angular.module('CadastroAluno', ['br.cidades.estados', 'ngMask', 'ngMaterial', 'ngMessages']);
-angular.module("CadastroAluno").controller("CadastroAlunoCtrl", function ($scope, brCidadesEstados){
+angular.module("CadastroAluno").controller("CadastroAlunoCtrl", function ($scope, brCidadesEstados, $mdDialog){
     $scope.app = "Cadastro de Aluno";
     $scope.alunos = [
         {nome:"Débora Viana", cpf:"70033574103", telefone:"61991032335", data: new Date()}
@@ -9,11 +9,41 @@ angular.module("CadastroAluno").controller("CadastroAlunoCtrl", function ($scope
         console.log(aluno)
         $scope.alunos.push(angular.copy (aluno))
         delete $scope.aluno;
+        $scope.alunoForm.$setUntouched();
     }
     $scope.limpar = function(aluno){
         delete $scope.aluno;
         $scope.alunoForm.$setUntouched();
     }
+
+    $scope.cancelar = function (alunoForm){
+        
+        if(alunoForm.$invalid){
+            confirm('Botão clicado!');
+            console.log("Voltanto para tela inicial")
+        }
+    }
+
+    $scope.cancelar = function(ev) {
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm = $mdDialog.confirm()
+              .title('Deseja cancelar a operação ?')
+              .targetEvent(ev)
+              .ok('Confirmar')
+              .cancel('Cancelar');
+    
+        $mdDialog.show(confirm).then(function() {
+          console.log("Cancelado")
+          //redirecionar para tela inicial
+        }, function() {
+          console.log("Não cancelado");
+
+        
+        });
+      };
+
+     
+
     $scope.sexo = [
     {nome: "Femino", codigo: "1"},
     {nome: "Masculino", codigo: "2"}

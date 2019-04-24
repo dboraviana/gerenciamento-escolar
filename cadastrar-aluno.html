@@ -26,11 +26,16 @@
 
       <md-content layout-padding>
         <div>
-          <form name="alunoForm" ng-class="{ 'has-error': userForm.$touched && userForm.$invalid }">
+          <form name="alunoForm">
+
+            
             <div layout-gt-xs="row">
               <md-input-container class="md-block" flex-gt-xs>
                     <label>Nome Completo: </label>
-                    <textarea md-maxlength="30"  md-select-on-focus ng-model="aluno.nome" ng-required="true" name="nome"></textarea>
+                    <textarea md-maxlength="30"  md-select-on-focus ng-model="aluno.nome" name="nome" required></textarea>
+                    <div ng-messages="alunoForm.nome.$error" ng-show="alunoForm.nome.$touched" >
+                        <div ng-message="required">Campo obrigatório</div>
+                      </div>
               </md-input-container>
     
             </div>
@@ -38,6 +43,9 @@
               <md-input-container class="md-block" flex-gt-sm>
                 <label>CPF: </label>
                 <input id="cpf" ng-model="aluno.cpf" mask='999.999.999-99' ng-required="true" name="cpf">
+                <div ng-messages="alunoForm.cpf.$error" ng-show="alunoForm.cpf.$touched && alunoForm.cpf.$invalid" >
+                    <div ng-message="required">Campo obrigatório</div>
+                  </div>
               </md-input-container>
             </div>
             <md-radio-group ng-model="aluno.sexo" class="md-block">
@@ -54,12 +62,15 @@
               <div layout-gt-sm="row" class="md-block">
                 <md-input-container >
                   <label>Telefone: </label>
-                  <input id="telefone" ng-model="aluno.telefone" mask='(99) 9?9999-9999' ng-required="true" name="telefone">
+                  <input id="telefone" ng-model="aluno.telefone" mask='(99) 9?9999-9999' name="telefone" required>
+                  <div ng-messages="alunoForm.telefone.$error" ng-show="alunoForm.telefone.$touched && alunoForm.telefone.$invalid" >
+                      <div ng-message="required">Campo obrigatório</div>
+                    </div>
                 </md-input-container >
                     
                     <md-input-container >
                     <label>Operadora</label>
-                    <md-select ng-model="aluno.operadora" ng-required="true">
+                    <md-select ng-model="aluno.operadora" ng-required="true" ng-disabled="!aluno.telefone">
                       <md-option ng-repeat="operadora in operadora" ng-value="operadora.nome" name="operadora">
                         {{operadora.nome}}
                       </md-option>
@@ -91,7 +102,8 @@
             <div class="botoes">
             <md-button class="md-raised md-primary" ng-click="cadastrar(aluno)" ng-disabled="alunoForm.$invalid">Cadastrar</md-button>
             <md-button class="md-raised" ng-click="limpar(aluno)">Limpar</md-button>
-            <md-button class="md-raised md-warn">Cancelar</md-button>
+            <md-button class="md-raised md-warn" ng-click="cancelar($event)">Cancelar</md-button>
+
           </div>
           </form>
         </div>

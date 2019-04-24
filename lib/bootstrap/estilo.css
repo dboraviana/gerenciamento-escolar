@@ -37,3 +37,12 @@ text-align: right
 table {
     width: 100%;
   }
+/* Styles go here */
+div.form-group {
+    transition:background-color 1s;
+  }
+  div.form-group.form-error { 
+    background-color:white;
+    background-color:rgba(255,0,0,0.3);
+  }
+  
