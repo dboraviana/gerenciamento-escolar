@@ -49,6 +49,12 @@ angular.module("CadastroAluno").controller("CadastroAlunoCtrl", function ($scope
     {nome: "Masculino", codigo: "2"}
     ];
 
+    $scope.tipo = [
+      {nome: "Fixo", codigo: "1"},
+      {nome: "Celular", codigo: "2"},
+      {nome: "Fax", codigo: "3"}
+      ];
+
     $scope.estados = brCidadesEstados.estados;
  
      $scope.buscarCidadesPorSigla = function(sigla){
@@ -107,7 +113,13 @@ angular.module("CadastroAluno").controller("CadastroAlunoCtrl", function ($scope
           title: "Não",
           status: false
         }];
-       
+        $scope.user = {
+          name: 'John Doe',
+          email: '',
+          phone: '',
+          address: 'Mountain View, CA',
+          donation: 19.99
+        };
         
 
 });

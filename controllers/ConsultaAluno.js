@@ -3,11 +3,11 @@ angular.module("ConsultarAluno").controller("ConsultarAlunoCtrl", function ($sco
 
     $scope.app="Consultar Aluno"
     $scope.alunos = [
-        {nome:"Débora Viana", cpf:"70033574103", telefone:"61991032335", data: new Date()},
-        {nome:"David Viana", cpf:"70033574103", telefone:"672525784", data: new Date()},
-        {nome:"Adriano Fernandes", cpf:"64610764920", telefone:"979421697", data: new Date()},
-        {nome:"Agnaldo dos Santos", cpf:"16394607215", telefone:"715521759", data: new Date()},
-        {nome:"Ernanes da Silva", cpf:"00784164266", telefone:"518681811", data: new Date()}
+        {id: 1, nome:"Débora Viana", cpf:"70033574103", telefone:"61991032335", data: new Date()},
+        {id: 2,nome:"David Viana", cpf:"70033574103", telefone:"672525784", data: new Date()},
+        {id: 3,nome:"Adriano Fernandes", cpf:"64610764920", telefone:"979421697", data: new Date()},
+        {id: 4,nome:"Agnaldo dos Santos", cpf:"16394607215", telefone:"715521759", data: new Date()},
+        {id: 5,nome:"Ernandes da Silva", cpf:"00784164266", telefone:"518681811", data: new Date()}
     ];
 
 
@@ -15,22 +15,28 @@ angular.module("ConsultarAluno").controller("ConsultarAlunoCtrl", function ($sco
         delete $scope.search;
     }
 
-    $scope.excluir = function(ev, aluno){
-        console.log("Excluir registro! ")
-        console.log(ev)
-        
+    $scope.excluir = function(ev, aluno, alunos){
         var confirm = $mdDialog.confirm()
-        .title('Deseja excluir o registro ?')
-        .targetEvent(ev)
-        .ok('Confirmar')
-        .cancel('Cancelar');
-        $mdDialog.show(confirm).then(function() {
-            console.log("Cancelado")
-            //redirecionar para tela inicial
-          }, function() {
-            console.log("Não cancelado");
+            .title('Deseja excluir o registro ?')
+            .targetEvent(ev)
+            .ok('Confirmar')
+            .cancel('Cancelar');
+                $mdDialog.show(confirm).then(function() {
+                    
+                    $scope.excluir = function(id){
+                        angular.forEach($scope.alunos, function(aluno){
+                                
+                                console.log(aluno.id + "--" +aluno.nome)    
+                                   
+                            
+                        });
+                    }
+                    
+                
+                 }, function() {
+                    console.log("Não excluir o registro: " + aluno.nome);
             
-          });
-    }
+                    });
+                }
 
 });

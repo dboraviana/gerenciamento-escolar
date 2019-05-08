@@ -15,12 +15,11 @@
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <body ng-controller="ConsultarAlunoCtrl">
-        <div class="quadro">
-          <md-content layout-gt-sm="row" layout-padding>
-        
+        <div class="container">
             <h1>{{app}}</h1>
-  
-            <md-content layout-padding>
+
+          <md-content layout-gt-sm="row" layout-padding>
+              <md-content layout-padding>
               <md-input-container class="md-block" flex-gt-xs>
                 <label>Nome ou CPF:  </label>
                 <textarea md-select-on-focus ng-model="search"></textarea>
@@ -32,7 +31,7 @@
 
               
               <md-table-container class="md-block">
-                <table class="table table-striped md-block">
+                <table class="table">
                   
                   <tbody>
                   <tr>   
@@ -52,7 +51,7 @@
                       <md-button class="md-mini" ng-click="alterar(aluno)">
                         <i class="material-icons ">build</i>
                       </md-button>
-                      <md-button class="md-mini" ng-click="excluir($event)">
+                      <md-button class="md-mini" ng-click="excluir($event, aluno)">
                          <i class="material-icons">delete</i>
                       </md-button>
                       <md-button class="md-mini" ng-click="visualizar()">

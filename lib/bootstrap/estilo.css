@@ -1,13 +1,8 @@
-.quadro {
-    width: 920px;
-    text-align: left;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-} 
+
 .table {
     margin-top: 20px;
     text-align: left;
+    
 }
 .form-control {
     margin-bottom: 5px;
@@ -46,3 +41,12 @@ div.form-group {
     background-color:rgba(255,0,0,0.3);
   }
   
+  h1{
+      text-align: center
+  }
+  
+  .container{
+    width: 780px;
+	max-width: 90vw;
+	margin: 0 auto;
+  }
