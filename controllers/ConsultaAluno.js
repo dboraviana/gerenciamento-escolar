@@ -1,5 +1,5 @@
 angular.module('ConsultarAluno', ['ngMask', 'ngMaterial', 'ngMessages']);
-angular.module("ConsultarAluno").controller("ConsultarAlunoCtrl", function ($scope, $mdDialog){
+angular.module("ConsultarAluno").controller("ConsultarAlunoCtrl", function ($scope, $mdDialog, $http ){
 
     $scope.app="Consultar Aluno"
     $scope.alunos = [
@@ -16,21 +16,16 @@ angular.module("ConsultarAluno").controller("ConsultarAlunoCtrl", function ($sco
     }
 
     $scope.excluir = function(ev, aluno, alunos){
-        var confirm = $mdDialog.confirm()
+        var confirm = $mdDialog.confirm() 
             .title('Deseja excluir o registro ?')
             .targetEvent(ev)
             .ok('Confirmar')
             .cancel('Cancelar');
-                $mdDialog.show(confirm).then(function() {
-                    
-                    $scope.excluir = function(id){
-                        angular.forEach($scope.alunos, function(aluno){
-                                
-                                console.log(aluno.id + "--" +aluno.nome)    
-                                   
-                            
-                        });
-                    }
+                $mdDialog.show(confirm).then(function(alunos) {
+                    angular.forEach($scope.alunos, function(){
+                        $scope.alunos.splice(aluno.id);
+                            console.log("O aluno " + aluno.nome + " foi excluido!");
+                    });
                     
                 
                  }, function() {
