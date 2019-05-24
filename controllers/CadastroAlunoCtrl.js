@@ -1,9 +1,7 @@
 angular.module('CadastroAluno', ['br.cidades.estados', 'ngMask', 'ngMaterial', 'ngMessages']);
 angular.module("CadastroAluno").controller("CadastroAlunoCtrl", function ($scope, brCidadesEstados, $mdDialog){
     $scope.app = "Cadastro de Aluno";
-    $scope.alunos = [
-        {nome:"Débora Viana", cpf:"70033574103", telefone:"61991032335", data: new Date()}
-    ];
+    $scope.alunos = [];
 
     $scope.cadastrar = function(aluno){
         console.log(aluno)
