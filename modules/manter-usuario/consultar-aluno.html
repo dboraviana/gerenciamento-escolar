@@ -1,0 +1,54 @@
+
+    <div ng-controller="ConsultarAlunoCtrl">
+        <div class="container">
+            <h1>{{app}}</h1>
+
+          <md-content layout-gt-sm="row" layout-padding>
+              <md-content layout-padding>
+              <md-input-container class="md-block" flex-gt-xs>
+                <label>Nome ou CPF:  </label>
+                <textarea md-select-on-focus ng-model="search"></textarea>
+              </md-input-container>
+              <div class="botoes-consultar">
+                  <md-button class="md-raised md-primary" ng-click="">Cadastrar</md-button>
+                  <md-button class="md-raised" ng-click="limpar(search)" ng-show="search">Limpar</md-button> 
+                </div>
+              <md-table-container class="md-block">
+                <table class="table">
+                  
+                  <tbody>
+                  <tr>   
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Data de Cadastro</th>
+                    <th>Ações</th>
+                  </tr>  
+                  <tr ng-repeat="aluno in alunos | filter: search:strict">
+                    <td >{{aluno.nome}}</td>
+                    <td >{{aluno.cpf}}</td>
+                    <td >{{aluno.telefone}}</td>
+                    <td >{{aluno.data }}</td>
+                    <td >
+                       
+                      <md-button class="md-mini" ng-click="alterar(aluno)">
+                        <i class="material-icons ">build</i>
+                      </md-button>
+                      <md-button class="md-mini" ng-click="excluir($event, aluno)">
+                         <i class="material-icons">delete</i>
+                      </md-button>
+                      <md-button class="md-mini" ng-click="visualizar()">
+                        <i class="material-icons">pageview</i></td>
+                      </md-button>
+                  </tr>
+                  <td>
+                </td>
+                </table>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </md-content>
+    </div>
+  </div>
+</div>

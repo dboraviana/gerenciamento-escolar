@@ -3,75 +3,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="pt-br" ng-app="ConsultarAluno">
     <head>
-        <title>Consultar aluno</title>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src='bower_components/ngMask/dist/ngMask.min.js'></script>
-        <script src="controllers/ConsultaAluno.js"></script>
-        <script src="bower_components/angular-aria/angular-aria.js"></script> 
-        <script src="bower_components/angular-animate/angular-animate.js"></script> 
-        <script src="bower_components/angular-messages/angular-messages.js"></script> 
-        <script src="bower_components/angular-material/angular-material.js"></script> 
+        <title>Gerenciamento escolar</title>
+        <script src="config/configuration.js"></script>
+        <script src="config/app.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src='lib/angular/ngMask.js'></script>
+        <script src="modules/manter-usuario/controllers/ConsultarAlunoCtrl.js"></script>
+        <script src="lib/angular/angular-aria.js"></script> 
+        <script src="lib/angular/angular-animate.js"></script> 
+        <script src="lib/angular/angular-messages.js"></script> 
+        <script src="lib/angular/angular-material.js"></script> 
+        <script src="lib/angular/angular-route.js"></script> 
         <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
         <link rel="stylesheet" href="lib/bootstrap/estilo.css">
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <body ng-controller="ConsultarAlunoCtrl">
-        <div class="container">
-            <h1>{{app}}</h1>
+   
+    <body>
+            <md-toolbar>
 
-          <md-content layout-gt-sm="row" layout-padding>
-              <md-content layout-padding>
-              <md-input-container class="md-block" flex-gt-xs>
-                <label>Nome ou CPF:  </label>
-                <textarea md-select-on-focus ng-model="search"></textarea>
-              </md-input-container>
-              <div class="botoes-consultar">
-                  <md-button class="md-raised md-primary" ng-click="">Cadastrar</md-button>
-                  <md-button class="md-raised" ng-click="limpar(search)" ng-show="search">Limpar</md-button> 
-                </div>
+                    <div class="md-toolbar-tools">
+                      <h2 md-truncate="" flex="">Gerenciamento Escolar</h2>
+                
+                      <md-button>
+                        Aluno
+                      </md-button>
+                      <md-button>
+                        Curso
+                     </md-button>
+                     <md-button>
+                        Turma
+                    </md-button>
+                    
+                    </div>
+                
+                  </md-toolbar>
 
-              
-              <md-table-container class="md-block">
-                <table class="table">
-                  
-                  <tbody>
-                  <tr>   
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Telefone</th>
-                    <th>Data de Cadastro</th>
-                    <th>Ações</th>
-                  </tr>  
-                  <tr ng-repeat="aluno in alunos | filter: search:strict">
-                    <td >{{aluno.nome}}</td>
-                    <td >{{aluno.cpf}}</td>
-                    <td >{{aluno.telefone}}</td>
-                    <td >{{aluno.data }}</td>
-                    <td >
-                       
-                      <md-button class="md-mini" ng-click="alterar(aluno)">
-                        <i class="material-icons ">build</i>
-                      </md-button>
-                      <md-button class="md-mini" ng-click="excluir($event, aluno)">
-                         <i class="material-icons">delete</i>
-                      </md-button>
-                      <md-button class="md-mini" ng-click="visualizar()">
-                        <i class="material-icons">pageview</i></td>
-                      </md-button>
-                  </tr>
-                  <td>
-                  
-                </td>
-                </table>
-             
+                  <md-whiteframe class="md-whiteframe-1dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                        <span>Teste/span>
+                      </md-whiteframe>
+        <div ng-view>
                
-              </tbody>
-            </table>
-            
-          </form>
         </div>
-      </md-content>
+    </body>
+
+
     
-    </div>
-  </div>
-</body>

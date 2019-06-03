@@ -1,0 +1,106 @@
+<md-whiteframe class="md-whiteframe-1dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+<div  ng-controller="CadastroAlunoCtrl">
+<form name="alunoForm"> 
+<div  class="container" layout="column" layout-padding ng-cloak>
+    <h1>{{app}}</h1>
+  <br/>
+  <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <label>Nome Completo</label>
+      <input ng-model="aluno.nome" type="text" name="nome" required>
+      <div ng-messages="alunoForm.nome.$error" >
+          <div  ng-message="required">Campo obrigatório</div>
+        </div>
+    </md-input-container>
+
+    <md-input-container md-no-float class="md-block">
+      <label>CPF</label>
+      <input ng-model="aluno.cpf" name="cpf" mask='999.999.999-99' md-maxlength="14" required>
+      <div ng-messages="alunoForm.cpf.$error">
+          <div ng-message="required">Campo obrigatório!</div>
+          <div ng-message="mask">CPF inválido!</div>
+        </div>
+    </md-input-container>
+
+    <md-radio-group ng-model="aluno.sexo" class="md-block">
+        <label>Genêro: </label>
+       <md-radio-button ng-repeat="sexo in sexo" value="{{sexo.nome}}">{{sexo.nome}}</md-radio-button>
+      </md-radio-group> 
+     <div>
+    <md-input-container>
+    
+    <md-input-container class="md-block">
+      <label>E-mail</label>
+      <input ng-model="aluno.email" name="email" type="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
+      <div ng-messages="alunoForm.email.$error">
+          <div ng-message="pattern">E-mail inválido!</div>
+        </div>
+    </md-input-container>
+
+  </md-card>
+    <div layout="row" class="md-block flex-50">
+        <md-input-container >
+            <label>Tipo</label>
+            <md-select ng-model="aluno.tipo" >
+              <md-option ng-repeat="tipo in tipo" ng-value="tipo.nome" name="tipo">
+                {{tipo.nome}}
+              </md-option>
+            </md-select>
+          </md-input-container> 
+          
+        <md-input-container >
+            <label>Operadora</label>
+            <md-select ng-model="aluno.operadora"  ng-disabled="!aluno.tipo">
+              <md-option ng-repeat="operadora in operadora" ng-value="operadora.nome" name="operadora">
+                {{operadora.nome}}
+              </md-option>
+            </md-select>
+          </md-input-container> 
+      <md-input-container >
+          <label>Telefone: </label>
+          <input id="telefone" ng-model="aluno.telefone" mask='(99) 9?9999-9999' name="telefone" required ng-disabled="!aluno.operadora"> 
+          <div ng-messages="alunoForm.telefone.$error" ng-show="alunoForm.telefone.$touched && alunoForm.telefone.$invalid" >
+              <div ng-message="required">Campo obrigatório</div>
+              <div ng-message="mask">Telefone inválido</div>
+            </div>
+          </md-input-container>
+        </div>
+      </md-card-content>
+    </md-card>
+
+    <md-input-container class="md-block" >
+        <label>Escolaridade</label>
+        <md-select ng-model="aluno.escolaridade" >
+          <md-option ng-repeat="escolaridade in escolaridades" ng-value="escolaridade.nome" >
+            {{escolaridade.nome}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+        
+      <md-input-container class="md-block" >
+        <label>Profissão</label>
+        <md-select ng-model="aluno.profissao" >
+          <md-option ng-repeat="profissao in profissoes" ng-value="profissao.nome" >
+            {{profissao.nome}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+    </md-content>
+    </form>                        
+    <div class="botoes">
+    <md-button class="md-raised md-primary" ng-click="cadastrar(aluno)" ng-disabled="alunoForm.$invalid">Cadastrar</md-button>
+    <md-button class="md-raised" ng-click="limpar(aluno)">Limpar</md-button>
+    <md-button class="md-raised md-warn" ng-click="cancelar($event)">Cancelar</md-button>
+
+       </div>
+          </form>
+        </div>
+      </md-content>
+    
+    </div>
+  </div>
+</div>
+
+</md-whiteframe>
